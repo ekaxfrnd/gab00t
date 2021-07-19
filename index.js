@@ -27,7 +27,11 @@ const connectDB = async () => {
 connectDB()
 
 // view engine
-app.engine('.hbs', exphbs({ extname: '.hbs' }))
+const hbs = exphbs.create({
+    defaultLayout: 'main',
+    extname: 'hbs'
+})
+app.engine('hbs', hbs.engine)
 app.set('view engine', '.hbs')
 
 // static folder
