@@ -15,6 +15,16 @@ const {
 
 app.use(logger('dev'))
 
+const connection = require('./config/connection')
+const connectDB = async () => {
+    try {
+        await connection.authenticate()
+        console.log('db connected success.')
+    } catch (err) {
+        console.log(`db connection error: ${err.message}`)
+    }
+}
+
 // view engine
 app.engine('.hbs', exphbs({ extname: '.hbs' }))
 app.set('view engine', '.hbs')
