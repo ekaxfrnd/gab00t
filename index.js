@@ -38,7 +38,10 @@ app.set('view engine', 'hbs')
 app.use(express.static(path.join(__dirname, 'assets')))
 
 app.get('/', (req, res) => {
-    res.render('index')
+    res.render('index', {
+        title: 'GaB00t',
+        user: 'me'
+    })
 })
 
 app.listen(SERVER_PORT, () => {
