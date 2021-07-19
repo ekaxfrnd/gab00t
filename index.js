@@ -24,6 +24,7 @@ const connectDB = async () => {
         console.log(`db connection error: ${err.message}`)
     }
 }
+connectDB()
 
 // view engine
 app.engine('.hbs', exphbs({ extname: '.hbs' }))
