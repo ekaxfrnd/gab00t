@@ -39,8 +39,8 @@ app.use(express.static(path.join(__dirname, 'assets')))
 
 app.get('/', (req, res) => {
     res.render('index', {
-        title: 'GaB00t',
-        user: 'un1Que'
+        title: 'Dashboard',
+        user: 'unique'
     })
 })
 
