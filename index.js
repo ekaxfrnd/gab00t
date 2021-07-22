@@ -28,10 +28,6 @@ const connectDB = async () => {
 }
 connectDB()
 
-// routes
-const routeUser = require('./routes/User')
-app.use('/', routeUser)
-
 // view engine
 const hbs = exphbs.create({
     defaultLayout: 'dashboard',
@@ -50,7 +46,8 @@ app.get('/', (req, res) => {
     })
 })
 
-app.use('/')
+// routes user
+app.use('/', require('./routes/User'))
 
 app.listen(SERVER_PORT, () => {
     console.log(`server running on: http://${SERVER_HOST}:${SERVER_PORT}`)
