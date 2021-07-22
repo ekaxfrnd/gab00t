@@ -2,13 +2,13 @@ const User = require('../models/User')
 
 module.exports = {
     getRegister: (req, res) => {
-        res.render('register', {
+        res.render('auth/register', {
             layout: 'auth',
             title: 'Register'
         })
     },
     getLogin: (req, res) => {
-        res.render('login', {
+        res.render('auth/login', {
             layout: 'auth',
             title: 'Login'
         })
