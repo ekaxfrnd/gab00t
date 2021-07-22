@@ -15,6 +15,8 @@ const {
 
 app.use(logger('dev'))
 
+// database connection
+
 const connection = require('./config/connection')
 const connectDB = async () => {
     try {
@@ -25,6 +27,10 @@ const connectDB = async () => {
     }
 }
 connectDB()
+
+// routes
+const routeUser = require('./routes/User')
+app.use('/', routeUser)
 
 // view engine
 const hbs = exphbs.create({
@@ -43,6 +49,8 @@ app.get('/', (req, res) => {
         user: 'unique'
     })
 })
+
+app.use('/')
 
 app.listen(SERVER_PORT, () => {
     console.log(`server running on: http://${SERVER_HOST}:${SERVER_PORT}`)
