@@ -15,8 +15,9 @@ const {
 
 app.use(logger('dev'))
 
-// database connection
+app.use(bodyParser.urlencoded({ extended: false }))
 
+// database connection
 const connection = require('./config/connection')
 const connectDB = async () => {
     try {
