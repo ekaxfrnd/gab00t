@@ -1,6 +1,6 @@
 const { Sequelize } = require('sequelize')
 
-require('dotenv')
+require('dotenv').config()
 
 const {
     DB_NAME, DB_USER, DB_PASS,
