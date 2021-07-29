@@ -1,6 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const session = require('express-session')
+const passport = require('passport')
 const exphbs = require('express-handlebars')
+const flash = require('connect-flash')
 require('dotenv').config()
 const path = require('path')
 
@@ -10,12 +13,20 @@ const app = express()
 
 const {
     SERVER_HOST,
-    SERVER_PORT
+    SERVER_PORT,
+    SESSION_SECRET
 } = process.env
 
 app.use(logger('dev'))
 
 app.use(bodyParser.urlencoded({ extended: false }))
+
+// session config
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+}))
 
 // database connection
 const connection = require('./config/connection')
