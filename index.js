@@ -28,6 +28,11 @@ app.use(session({
     saveUninitialized: false
 }))
 
+// passport config
+require('./config/passport')
+app.use(passport.initialize())
+app.use(passport.session())
+
 // database connection
 const connection = require('./config/connection')
 const connectDB = async () => {
