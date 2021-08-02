@@ -75,7 +75,7 @@ module.exports = {
         passport.authenticate('local', {
             successRedirect: '/dashboard',
             failureRedirect: '/auth/login',
-            successFlash: true
+            failureFlash: true
         })(req, res, next)
     },
     getDashboard: (req, res) => {
