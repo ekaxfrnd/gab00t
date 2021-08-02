@@ -61,5 +61,21 @@ module.exports = {
             res.redirect('/auth/register')
             return
         }
+    },
+    postLogin: (req, res, next) => {
+        const {
+            email,
+            password
+        } = req.body
+        if(!email || !password) {
+            req.flash('fail', 'content can not be empty!')
+            res.redirect('/auth/login')
+            return
+        }
+        passport.authenticate('local', {
+            successRedirect: '/dashboard',
+            failureRedirect: '/auth/login',
+            successFlash: true
+        })(req, res, next)
     }
 }
