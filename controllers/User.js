@@ -79,7 +79,8 @@ module.exports = {
         })(req, res, next)
     },
     getDashboard: (req, res) => {
-        res.render('dashboard', {
+        res.render('index', {
+            title: 'Dashboard',
             email: req.user.email
         })
     }
