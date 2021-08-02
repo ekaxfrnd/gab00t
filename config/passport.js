@@ -7,7 +7,7 @@ const User = require('../models/User')
 passport.use(new LocalStrategy({
     usernameField: 'email',
     passReqToCallback: true
-}, async (req, email, password, done => {
+}, async (req, email, password, done) => {
     try {
         const user = await User.findOne({
             where: {
@@ -25,7 +25,7 @@ passport.use(new LocalStrategy({
     } catch (err) {
         return done(err)
     }
-})))
+}))
 
 passport.serializeUser((user, done) => done(null, user))
 passport.deserializeUser((user, done) => done(null, user))
