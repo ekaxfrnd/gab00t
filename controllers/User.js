@@ -30,10 +30,12 @@ module.exports = {
             } = req.body
             let { password, confirm_password } = req.body
             if(!first_name || !last_name || !email || !password || !confirm_password) {
+                req.flash('fail', 'content can not be empty!')
                 res.redirect('/auth/register')
                 return
             }
             if(password != confirm_password) {
+                req.flash('fail', 'password do not match!')
                 res.redirect('/auth/register')
                 return
             }
@@ -46,13 +48,16 @@ module.exports = {
                     email,
                     password: hashedPassword
                 })
+                req.flash('success', 'you are now registered.')
                 res.redirect('/auth/login')
                 return
             } else {
+                req.flash('fail', 'email already registered!')
                 res.redirect('/auth/register')
                 return
             }
         } catch (err) {
+            req.flash('error', 'something error, call developer!')
             res.redirect('/auth/register')
             return
         }
