@@ -3,11 +3,21 @@ const router = require('express').Router()
 const {
     getRegister,
     getLogin,
-    postRegister
+    postRegister,
+    postLogin,
+    getDashboard
 } = require('../controllers/User')
 
-router.get('/auth/register', getRegister)
-router.get('/auth/login', getLogin)
-router.post('/auth/register', postRegister)
+const {
+    checkNotAuthenticated,
+    checkAuthenticated
+} = require('../middleware/Auth')
+
+router.get('/auth/register', checkNotAuthenticated, getRegister)
+router.get('/auth/login', checkNotAuthenticated, getLogin)
+router.post('/auth/register', checkNotAuthenticated, postRegister)
+router.post('/auth/login', checkNotAuthenticated, postLogin)
+
+router.get('/dashboard', checkAuthenticated, getDashboard)
 
 module.exports = router
