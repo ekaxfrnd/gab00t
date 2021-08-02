@@ -56,13 +56,6 @@ app.set('view engine', 'hbs')
 // static folder
 app.use(express.static(path.join(__dirname, 'assets')))
 
-app.get('/', (req, res) => {
-    res.render('index', {
-        title: 'Dashboard',
-        user: 'unique'
-    })
-})
-
 // routes user
 app.use('/', require('./routes/User'))
 
