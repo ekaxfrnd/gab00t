@@ -77,5 +77,10 @@ module.exports = {
             failureRedirect: '/auth/login',
             successFlash: true
         })(req, res, next)
+    },
+    getDashboard: (req, res) => {
+        res.render('dashboard', {
+            email: req.user.email
+        })
     }
 }
