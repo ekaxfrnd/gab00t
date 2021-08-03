@@ -5,7 +5,8 @@ const {
     getLogin,
     postRegister,
     postLogin,
-    getDashboard
+    getDashboard,
+    logout
 } = require('../controllers/User')
 
 const {
@@ -18,6 +19,8 @@ router.get('/auth/login', checkNotAuthenticated, getLogin)
 router.post('/auth/register', checkNotAuthenticated, postRegister)
 router.post('/auth/login', checkNotAuthenticated, postLogin)
 
-router.get('/dashboard', checkAuthenticated, getDashboard)
+router.get('/dashboard', checkAuthenticated, 
+getDashboard)
+router.get('/logout', logout)
 
 module.exports = router
