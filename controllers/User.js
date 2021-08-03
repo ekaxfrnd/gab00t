@@ -83,5 +83,11 @@ module.exports = {
             title: 'Dashboard',
             email: req.user.email
         })
+    },
+    logout: (req, res) => {
+        req.flash('success', 'you are logged out.')
+        req.logOut()
+        res.redirect('/auth/login')
+        return
     }
 }
