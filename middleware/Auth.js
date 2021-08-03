@@ -3,12 +3,14 @@ module.exports = {
         if(req.isAuthenticated()) {
             return next()
         }
-        return res.redirect('/auth/login')
+        res.redirect('/auth/login')
+        return
     },
     checkNotAuthenticated: (req, res, next) => {
         if(req.isAuthenticated()) {
             return res.redirect('/dashboard')
         }
-        return next()
+        next()
+        return 
     }
 }
