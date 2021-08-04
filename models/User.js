@@ -21,7 +21,6 @@ const User = connection.define('user', {
     },
     role: {
         type: Sequelize.ENUM('admin', 'user'),
-        allowNull: false,
         defaultValue: 'user'
     }
 })
