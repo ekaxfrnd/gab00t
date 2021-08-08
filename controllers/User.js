@@ -81,7 +81,7 @@ module.exports = {
     getDashboard: (req, res) => {
         res.render('index', {
             title: 'Dashboard',
-            email: req.user.email
+            user: req.user
         })
     },
     logout: (req, res) => {
